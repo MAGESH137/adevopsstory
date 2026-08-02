@@ -17,3 +17,6 @@ jobs:                                      # WHAT to run
 
       - name: Show system info
         run: uname -a
+        
+      - name: QUERY from secerts
+        run: test
