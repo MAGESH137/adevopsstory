@@ -9,11 +9,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Show GitHub context info
-        run: |
-          echo "Repository: $GITHUB_REPOSITORY"
-          echo "Branch: $GITHUB_REF_NAME"
-          echo "SHA: $GITHUB_SHA"
-          echo "Actor: $GITHUB_ACTOR"
-          echo "Workflow: $GITHUB_WORKFLOW"
-          echo "Run ID: $GITHUB_RUN_ID"
+      - name: Use a custom secret
+        run: echo "Deploying to ${{ secrets.DEPLOY_HOST }}"
