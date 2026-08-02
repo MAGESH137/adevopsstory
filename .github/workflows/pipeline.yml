@@ -1,19 +1,13 @@
-name: My First Workflow                    # Name shown in the Actions tab
+name: Deploy with Secrets
 
-on:                                        # WHEN does this run?
-  push:                                    # Every time you push code
-    branches: [main]                       # Only on the 'main' branch                       # Also allow manual trigger from GitHub UI
+on:
+  push:
+    branches: [main]
 
-jobs:                                      # WHAT to run
-  say-hello:                               # Job name (can be anything)
-    runs-on: ubuntu-latest                 # Use GitHub's Ubuntu server
-
-    steps:                                 # Steps run IN ORDER, top to bottom
-      - name: Print a message
-        run: echo "Hello from GitHub Actions!"
-
-      - name: Show the date
-        run: date
-
-      - name: Show system info
-        run: uname -a
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use a custom secret
+        run: echo "Deploying to ${{ secrets.DEPLOY_HOST }}"
